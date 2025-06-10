@@ -181,7 +181,7 @@ app.post("/timeDetails", async (req, res) => {
         <p><strong>${expectedTime}</strong> </p>
         <p>We hope you'll enjoy your meal! If you have any questions or need further assistance, please don't hesitate to contact us.</p>
         <p>Warm regards,</p>
-        <p><strong>Route66</strong></p>
+        <p><strong>tajmahal</strong></p>
         <img src='cid:food' alt='Order Confirmation' width='1000px'>
     `,
     attachments: [
@@ -317,7 +317,7 @@ app.post('/sendotp', (req, res) => {
         <p>If you did not request this verification, please ignore this email or contact our support team for assistance.</p>
         <p>Thank you for choosing our service.</p>
         <p>Best regards,</p>
-        <p><strong>Route66</strong></p>
+        <p><strong>tajmahal</strong></p>
     `
 };
 
@@ -423,7 +423,7 @@ app.post("/createReservation", async (req, res) => {
                                 tajmahal<br>
                                 123 Main Street, Anytown, USA<br>
                                 Phone: (555) 123-4567<br>
-                                Email: info@route66diner.com
+                                Email: info@tajmahaldiner.com
                             </p>
                         </div>
                     </div>
