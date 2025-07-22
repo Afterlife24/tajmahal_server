@@ -1,22 +1,31 @@
-name: Deploy template_expressjs in prod
+name: Deploy Backend to Lambda
 
 on:
   push:
-    branches:
-    - main
-
-env:
-  NODE_VERSION: 18.x
-  SKIP_PREFLIGHT_CHECK: true
+    branches: [ main ]
 
 jobs:
-  build:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v3
-        - name: GoFastAPI Deploy
-          run: |
-            npx gofastapi login --auth-token=${{ secrets.GOFASTAPI_AUTH_TOKEN }}
-            npx gofastapi clean
-            npx gofastapi deploy
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Serverless v3
+        run: npm install -g serverless@3
+
+      - name: Deploy to AWS Lambda
+        run: serverless deploy
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          MONGO_URI: ${{ secrets.MONGO_URI }}

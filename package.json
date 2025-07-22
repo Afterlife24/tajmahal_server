@@ -12,7 +12,8 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "nodemon": "^3.1.4"
+    "nodemon": "^3.1.4",
+    "serverless-offline": "^14.4.0"
   },
   "dependencies": {
     "body-parser": "^1.20.2",

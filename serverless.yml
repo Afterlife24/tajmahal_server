@@ -1,0 +1,37 @@
+service: route66-route66
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: eu-west-3
+  environment:
+    MONGO_URI: ${env:MONGO_URI}
+  httpApi:
+    cors: 
+      allowedOrigins:
+        - https://www.tajmahal-tajmahal.afterlife.org.in
+        - https://www.tajmahal-admin.afterlife.org.in
+      allowedMethods:
+        - GET
+        - POST
+        - PUT
+        - DELETE
+        - OPTIONS
+      allowedHeaders:
+        - Content-Type
+        - Authorization
+
+functions:
+  app:
+    handler: lambda.handler
+    events:
+      - httpApi:
+          path: /{proxy+}
+          method: '*'
+
+plugins:
+  - serverless-offline
+
+package:
+  exclude:
+    - node_modules/aws-sdk/**
