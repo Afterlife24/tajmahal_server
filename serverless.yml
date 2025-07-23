@@ -9,7 +9,7 @@ provider:
   httpApi:
     cors: 
       allowedOrigins:
-        - https://www.tajmahal-tajmahal.afterlife.org.in
+        - https://www.tajmahal-scanme.afterlife.org.in/
         - https://www.tajmahal-admin.afterlife.org.in
       allowedMethods:
         - GET
